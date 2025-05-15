@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Data</title>
+  </head>
+  <body>
+    <h1>Flight Data</h1>
+    <form action="/getbestflights" method="get">
+      <label for="hairport">Home Airport:</label>
+      <input type="text" id="hairport" name="hairport" required />
+      <label for="loption">Category:</label>
+      <select id="loption" name="loption" required>
+        <option value="beaches">Beach</option>
+        <option value="popular">City</option>
+        <option value="romantic">Romantic</option>
+        <option value="family">Family</option>
+        <option value="">Anything</option>
+      </select>
+      <button type="submit">Get Flight Data</button>
+    </form>
+
+    {% if data is defined %} {% if data %}
+    <h2>Scraped Data:</h2>
+    <table border="1">
+      <tr>
+        <th>City</th>
+        <th>Country</th>
+        <th>Price</th>
+      </tr>
+      {% for row in data %}
+      <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>No data available.</p>
+    {% endif %} {% endif %}
+  </body>
+</html>
