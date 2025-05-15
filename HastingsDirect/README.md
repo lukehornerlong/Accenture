@@ -9,7 +9,7 @@ Over the course of both roles, I gained hands-on experience in real-world softwa
 | Technology / Concept       | Proficiency Gained                              |
 |----------------------------|--------------------------------------------------|
 | `JavaScript` / `React`     | Daily use in feature development and refactoring |
-| `Jest`                     | Unit testing and TDD in large codebases          |
+| `Jest`                     | Unit testing and Test Driven Development in large codebases          |
 | `Git`                      | Feature branching, pull requests, code reviews   |
 | `Cucumber` (BDD)           | Wrote clear test scenarios for cross-functional teams |
 | `Agile / Scrum`            | Participated in standups, retros, discoveries    |
