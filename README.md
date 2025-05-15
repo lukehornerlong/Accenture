@@ -7,6 +7,7 @@ Hi! I'm a final-year Computer Science student at the **University of Birmingham*
 This repository is a collection of:
 - **University coursework** and coding assignments
 - **Personal projects** and Experiments, Tools, widgets, and utilities I’ve built to solve everyday problems
+- **Work Experience** documentation of what I learnt during work experiences
 
 ---
 
@@ -21,6 +22,9 @@ This repository is a collection of:
 /PersonalCoding/
 - personal projects, web apps, automation scripts
 - Mostly JavaScript, React, and Python
+
+/HastingsDirect/
+- read me file documenting coding experience completed whilst at Hastings Direct
 
  Note: My **final year project** is temporarily private until my work has been assessed. If you're interested in seeing the code, feel free to contact me. I’m happy to share access privately.
 
