@@ -2,10 +2,9 @@
 
 Hi! I'm a final-year Computer Science student at the **University of Birmingham**, with industry experience as a **Front-End Developer** at **Hastings Direct**.
 
-This repository is a curated collection of:
+This repository is a collection of:
 - 🎓 **University coursework** and coding assignments
-- 💻 **Personal projects** and experiments
-- 🛠️ Tools, widgets, and utilities I’ve built to solve everyday problems
+- 💻 **Personal projects** and Experiments, Tools, widgets, and utilities I’ve built to solve everyday problems
 
 ---
 
