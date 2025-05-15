@@ -1,4 +1,4 @@
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=40&duration=2000&pause=500&color=34D058&center=true&vCenter=true&width=1000&height=100&lines=Hi,+I'm+Luke+Horner-Long;Final+Year+CS+Student;Welcome+To+My+Repo" />
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=40&duration=2000&pause=2000&color=34D058&center=true&vCenter=true&width=1000&height=100&lines=Hi,+I'm+Luke+Horner-Long;Final+Year+CS+Student;Welcome+To+My+Repo" />
 
 # Personal & University Code Repository
 
