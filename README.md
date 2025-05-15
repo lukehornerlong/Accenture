@@ -26,7 +26,7 @@ This repository is a collection of:
 /HastingsDirect/
 - read me file documenting coding experience completed whilst at Hastings Direct
 
- Note: My **final year project** is temporarily private until my work has been assessed. If you're interested in seeing the code, feel free to contact me. I’m happy to share access privately.
+ Note: My **final year project** is private until my work has been assessed. If you're interested in seeing the code, feel free to contact me. I’m happy to share access privately.
 
 ---
 
