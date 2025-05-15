@@ -12,4 +12,4 @@ As per academic regulations, I am not permitted to publish this project publicly
 
 You can view the live version of the project here:
 
-**🔗 [Visit Hosted Site]([https://atmos-tool.vercel.app])**
+**🔗 [Visit Hosted Site](https://atmos-tool.vercel.app)**
