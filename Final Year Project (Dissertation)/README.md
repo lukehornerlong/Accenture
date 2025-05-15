@@ -1,4 +1,4 @@
-# Final Year Project – ATMOS 🎓💡
+# Final Year Project – ATMOS 
 
 ATMOS is a tool aimed at applying agile methodologies to neurodiverse individuals with the hope to help users overcome their struggles with executive functions and ultimatley improve their daily task managment.
 
@@ -12,4 +12,4 @@ As per academic regulations, I am not permitted to publish this project publicly
 
 You can view the live version of the project here:
 
-**🔗 [Visit Hosted Site](https://atmos-tool.vercel.app)**
+** [Visit Hosted Site](https://atmos-tool.vercel.app)**
