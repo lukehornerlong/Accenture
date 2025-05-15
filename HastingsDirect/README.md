@@ -12,7 +12,6 @@ Over the course of both roles, I gained hands-on experience in real-world softwa
 | `Jest`                     | Unit testing and TDD in large codebases          |
 | `Git`                      | Feature branching, pull requests, code reviews   |
 | `Cucumber` (BDD)           | Wrote clear test scenarios for cross-functional teams |
-| `DevOps Pipelines`         | Automated test and deployment task development   |
 | `Agile / Scrum`            | Participated in standups, retros, discoveries    |
 
 ## Key Contributions
