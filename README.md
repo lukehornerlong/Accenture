@@ -1,4 +1,4 @@
-# ![name](https://img.shields.io/badge/Luke%20Horner--Long-34D058?style=for-the-badge&logo=github&logoColor=white) – Personal & University Code Repository
+# ![name](https://img.shields.io/badge/Luke%20Horner--Long-34D058?style=for-the-badge&logo=github&logoColor=white) Personal & University Code Repository
 
 Hi! I'm a final-year Computer Science student at the **University of Birmingham**, with industry experience as a **Front-End Developer** at **Hastings Direct**.
 
