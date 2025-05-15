@@ -5,31 +5,31 @@
 Hi! I'm a final-year Computer Science student at the **University of Birmingham**, with industry experience as a **Front-End Developer** at **Hastings Direct**.
 
 This repository is a collection of:
-- 🎓 **University coursework** and coding assignments
-- 💻 **Personal projects** and Experiments, Tools, widgets, and utilities I’ve built to solve everyday problems
+- **University coursework** and coding assignments
+- **Personal projects** and Experiments, Tools, widgets, and utilities I’ve built to solve everyday problems
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 /Final-Year-Project-(Disseration)/
 - Final year dissertation project (currently private due to university policy)
 
 /UniversityCoding/
 - Coursework and projects from various modules
-- Languages include Java, Haskell, Python, SQL, C, JavaScript
+- Languages I have worked in include Java, Haskell, Python, SQL, C, JavaScript however only my Java work has been recoverable
 
 /PersonalCoding/
-- Self-directed projects, web apps, automation scripts
+- personal projects, web apps, automation scripts
 - Mostly JavaScript, React, and Python
 
- 🔒 Note: My **final year project** is temporarily private until my work has been assessed. If you're interested in seeing the code, feel free to contact me. I’m happy to share access privately.
+ Note: My **final year project** is temporarily private until my work has been assessed. If you're interested in seeing the code, feel free to contact me. I’m happy to share access privately.
 
 ---
 
-## 📫 Contact
+## Contact
 
-- 📧 **luke1hl@gmail.com**
-- 🔗 [LinkedIn](https://www.linkedin.com/in/lukehornerlong/)
+- **luke1hl@gmail.com**
+- [LinkedIn](https://www.linkedin.com/in/lukehornerlong/)
 
 ---
 
