@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.post-container {
+  flex-basis: 60%;
+}
+
+.post-title {
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+
+.post-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.post-description {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.user-container {
+  flex-basis: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.profile-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.made-by {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.profiles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.username {
+  font-size: 1.5rem;
+}
+
+.ingredients-container {
+  text-align: center;
+}
+
+.wiu-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.wiu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wiu-list li {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.checked {
+  font-size: 30px;
+  color: orange;
+}

@@ -1,0 +1,108 @@
+<div>
+  <h2 id="page-heading" data-cy="LikedByHeading">
+    <span jhiTranslate="teamprojectApp.likedBy.home.title">Liked Bies</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="teamprojectApp.likedBy.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-liked-by"
+        [routerLink]="['/liked-by/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="teamprojectApp.likedBy.home.createLabel"> Create a new Liked By </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="likedBies?.length === 0">
+    <span jhiTranslate="teamprojectApp.likedBy.home.notFound">No Liked Bies found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="likedBies && likedBies.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="liked">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.likedBy.liked">Liked</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="post.id">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.likedBy.post">Post</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.login">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.likedBy.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let likedBy of likedBies; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/liked-by', likedBy.id, 'view']">{{ likedBy.id }}</a>
+          </td>
+          <td>{{ likedBy.liked }}</td>
+          <td>
+            <div *ngIf="likedBy.post">
+              <a [routerLink]="['/post', likedBy.post.id, 'view']">{{ likedBy.post.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ likedBy.user?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/liked-by', likedBy.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/liked-by', likedBy.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(likedBy)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

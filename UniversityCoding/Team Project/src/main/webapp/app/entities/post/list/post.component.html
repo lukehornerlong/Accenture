@@ -1,0 +1,153 @@
+<div>
+  <h2 id="page-heading" data-cy="PostHeading">
+    <span jhiTranslate="teamprojectApp.post.home.title">Posts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="teamprojectApp.post.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-post"
+        [routerLink]="['/post/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="teamprojectApp.post.home.createLabel"> Create a new Post </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="posts?.length === 0">
+    <span jhiTranslate="teamprojectApp.post.home.notFound">No Posts found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="posts && posts.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="postTitle">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.postTitle">Post Title</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="postPic">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.postPic">Post Pic</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="postDesc">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.postDesc">Post Desc</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timestamp">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.timestamp">Timestamp</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="likes">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.likes">Likes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="affordability">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.affordability">Affordability</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="simplicity">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.simplicity">Simplicity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="shelfLife">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.shelfLife">Shelf Life</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.login">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dietaryTags.dietary">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.post.dietaryTags">Dietary Tags</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/post', post.id, 'view']">{{ post.id }}</a>
+          </td>
+          <td>{{ post.postTitle }}</td>
+          <td>
+            <a *ngIf="post.postPic" (click)="openFile(post.postPic, post.postPicContentType)">
+              <img [src]="'data:' + post.postPicContentType + ';base64,' + post.postPic" style="max-height: 30px" alt="post image" />
+            </a>
+            <span *ngIf="post.postPic">{{ post.postPicContentType }}, {{ byteSize(post.postPic) }}</span>
+          </td>
+          <td>{{ post.postDesc }}</td>
+          <td>{{ post.timestamp | formatMediumDatetime }}</td>
+          <td>{{ post.likes }}</td>
+          <td>{{ post.affordability }}</td>
+          <td>{{ post.simplicity }}</td>
+          <td>{{ post.shelfLife }}</td>
+          <td>
+            {{ post.user?.login }}
+          </td>
+          <td>
+            <span *ngFor="let dietaryTags of post.dietaryTags; let last = last">
+              <a class="form-control-static" [routerLink]="['/dietary-tags', dietaryTags.id, 'view']">{{ dietaryTags.dietary }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/post', post.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/post', post.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(post)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

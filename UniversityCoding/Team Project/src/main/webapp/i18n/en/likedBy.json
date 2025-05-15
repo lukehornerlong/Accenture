@@ -1,0 +1,26 @@
+{
+  "teamprojectApp": {
+    "likedBy": {
+      "home": {
+        "title": "Liked Bies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Liked By",
+        "createOrEditLabel": "Create or edit a Liked By",
+        "notFound": "No Liked Bies found"
+      },
+      "created": "A new Liked By is created with identifier {{ param }}",
+      "updated": "A Liked By is updated with identifier {{ param }}",
+      "deleted": "A Liked By is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Liked By {{ id }}?"
+      },
+      "detail": {
+        "title": "Liked By"
+      },
+      "id": "ID",
+      "liked": "Liked",
+      "post": "Post",
+      "user": "User"
+    }
+  }
+}

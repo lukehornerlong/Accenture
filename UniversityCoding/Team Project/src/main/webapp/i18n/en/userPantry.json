@@ -1,0 +1,26 @@
+{
+  "teamprojectApp": {
+    "userPantry": {
+      "home": {
+        "title": "User Pantries",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Pantry",
+        "createOrEditLabel": "Create or edit a User Pantry",
+        "notFound": "No User Pantries found"
+      },
+      "created": "A new User Pantry is created with identifier {{ param }}",
+      "updated": "A User Pantry is updated with identifier {{ param }}",
+      "deleted": "A User Pantry is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Pantry {{ id }}?"
+      },
+      "detail": {
+        "title": "User Pantry"
+      },
+      "id": "ID",
+      "timestamp": "Timestamp",
+      "post": "Post",
+      "user": "User"
+    }
+  }
+}

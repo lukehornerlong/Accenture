@@ -1,0 +1,199 @@
+<div>
+  <h2 id="page-heading" data-cy="AllergensHeading">
+    <span jhiTranslate="teamprojectApp.allergens.home.title">Allergens</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="teamprojectApp.allergens.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-allergens"
+        [routerLink]="['/allergens/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="teamprojectApp.allergens.home.createLabel"> Create a new Allergens </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="allergens?.length === 0">
+    <span jhiTranslate="teamprojectApp.allergens.home.notFound">No Allergens found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="allergens && allergens.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="celery">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.celery">Celery</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="gluten">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.gluten">Gluten</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="crustaceans">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.crustaceans">Crustaceans</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="egg">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.egg">Egg</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fish">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.fish">Fish</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lupin">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.lupin">Lupin</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="milk">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.milk">Milk</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="molluscs">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.molluscs">Molluscs</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mustard">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.mustard">Mustard</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nuts">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.nuts">Nuts</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="peanuts">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.peanuts">Peanuts</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sesame">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.sesame">Sesame</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="soya">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.soya">Soya</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sulphur">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.sulphur">Sulphur</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.login">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="post.id">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.allergens.post">Post</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let allergens of allergens; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/allergens', allergens.id, 'view']">{{ allergens.id }}</a>
+          </td>
+          <td>{{ allergens.celery }}</td>
+          <td>{{ allergens.gluten }}</td>
+          <td>{{ allergens.crustaceans }}</td>
+          <td>{{ allergens.egg }}</td>
+          <td>{{ allergens.fish }}</td>
+          <td>{{ allergens.lupin }}</td>
+          <td>{{ allergens.milk }}</td>
+          <td>{{ allergens.molluscs }}</td>
+          <td>{{ allergens.mustard }}</td>
+          <td>{{ allergens.nuts }}</td>
+          <td>{{ allergens.peanuts }}</td>
+          <td>{{ allergens.sesame }}</td>
+          <td>{{ allergens.soya }}</td>
+          <td>{{ allergens.sulphur }}</td>
+          <td>
+            {{ allergens.user?.login }}
+          </td>
+          <td>
+            <div *ngIf="allergens.post">
+              <a [routerLink]="['/post', allergens.post.id, 'view']">{{ allergens.post.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/allergens', allergens.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/allergens', allergens.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(allergens)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Allergens.
+    -->
+    <changeSet id="20230426114119-1" author="jhipster">
+        <createTable tableName="allergens">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="celery" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="gluten" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="crustaceans" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="egg" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="fish" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="lupin" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="milk" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="molluscs" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="mustard" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="nuts" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="peanuts" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="sesame" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="soya" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="sulphur" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_allergens__user_id" />
+            </column>
+            <column name="post_id" type="bigint">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_allergens__post_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20230426114119-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/allergens.csv"
+                  separator=";"
+                  tableName="allergens"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="celery" type="boolean"/>
+            <column name="gluten" type="boolean"/>
+            <column name="crustaceans" type="boolean"/>
+            <column name="egg" type="boolean"/>
+            <column name="fish" type="boolean"/>
+            <column name="lupin" type="boolean"/>
+            <column name="milk" type="boolean"/>
+            <column name="molluscs" type="boolean"/>
+            <column name="mustard" type="boolean"/>
+            <column name="nuts" type="boolean"/>
+            <column name="peanuts" type="boolean"/>
+            <column name="sesame" type="boolean"/>
+            <column name="soya" type="boolean"/>
+            <column name="sulphur" type="boolean"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="post-container">
+    <h1 class="post-title">{{ post.postTitle }}</h1>
+    <img
+      class="post-image"
+      src="{{
+        post.postPic == null
+          ? 'https://source.unsplash.com/random/800x600/?food'
+          : 'data:' + post.postPicContentType + ';base64,' + post.postPic
+      }}"
+      alt="{{ post.postTitle + ' image' }}"
+    />
+    <p class="post-description">{{ post.postDesc }}</p>
+  </div>
+
+  <div class="user-container">
+    <div class="profile-container">
+      <h2 class="made-by">Made by:</h2>
+      <div class="profiles">
+        <ng-container *ngFor="let user of userExtra">
+          <img
+            class="profile-image"
+            src="{{
+              user.profilePic == null
+                ? 'https://source.unsplash.com/random/800x600/?food'
+                : 'data:' + user.profilePicContentType + ';base64,' + user.profilePic
+            }}"
+            alt="profile image"
+          />
+        </ng-container>
+      </div>
+      <p class="username">{{ post.user.login }}</p>
+    </div>
+
+    <div class="ingredients-container">
+      <ul class="wiu-list">
+        <li>Affordability</li>
+        <div *ngIf="post.affordability == 5">
+          <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.affordability == 4">
+          <span *ngFor="let number of [0, 1, 2, 3]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.affordability == 3">
+          <span *ngFor="let number of [0, 1, 2]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.affordability == 2">
+          <span *ngFor="let number of [0, 1]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.affordability == 1">
+          <span class="checked">&#9733;</span>
+        </div>
+        <li>Simplicity</li>
+        <div *ngIf="post.simplicity == 5">
+          <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.simplicity == 4">
+          <span *ngFor="let number of [0, 1, 2, 3]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.simplicity == 3">
+          <span *ngFor="let number of [0, 1, 2]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.simplicity == 2">
+          <span *ngFor="let number of [0, 1]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.simplicity == 1">
+          <span class="checked">&#9733;</span>
+        </div>
+        <li>Shelf life</li>
+        <div *ngIf="post.shelfLife == 5">
+          <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.shelfLife == 4">
+          <span *ngFor="let number of [0, 1, 2, 3]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.shelfLife == 3">
+          <span *ngFor="let number of [0, 1, 2]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.shelfLife == 2">
+          <span *ngFor="let number of [0, 1]" class="checked">&#9733;</span>
+        </div>
+
+        <div *ngIf="post.shelfLife == 1">
+          <span class="checked">&#9733;</span>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,169 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-user-extra-heading" data-cy="UserExtraCreateUpdateHeading" jhiTranslate="teamprojectApp.userExtra.home.createOrEditLabel">
+        Create or edit a User Extra
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.userExtra.profilePic" for="field_profilePic">Profile Pic</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('profilePicContentType')!.value + ';base64,' + editForm.get('profilePic')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('profilePic')!.value"
+              alt="userExtra image"
+            />
+            <div *ngIf="editForm.get('profilePic')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start"
+                >{{ editForm.get('profilePicContentType')!.value }}, {{ byteSize(editForm.get('profilePic')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('profilePic', 'profilePicContentType', 'file_profilePic')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_profilePic"
+              data-cy="profilePic"
+              (change)="setFileData($event, 'profilePic', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="profilePic"
+            id="field_profilePic"
+            data-cy="profilePic"
+            formControlName="profilePic"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="profilePicContentType"
+            id="field_profilePicContentType"
+            formControlName="profilePicContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.userExtra.biography" for="field_biography">Biography</label>
+          <input type="text" class="form-control" name="biography" id="field_biography" data-cy="biography" formControlName="biography" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.userExtra.profileBanner" for="field_profileBanner">Profile Banner</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('profileBannerContentType')!.value + ';base64,' + editForm.get('profileBanner')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('profileBanner')!.value"
+              alt="userExtra image"
+            />
+            <div *ngIf="editForm.get('profileBanner')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start"
+                >{{ editForm.get('profileBannerContentType')!.value }}, {{ byteSize(editForm.get('profileBanner')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('profileBanner', 'profileBannerContentType', 'file_profileBanner')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_profileBanner"
+              data-cy="profileBanner"
+              (change)="setFileData($event, 'profileBanner', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="profileBanner"
+            id="field_profileBanner"
+            data-cy="profileBanner"
+            formControlName="profileBanner"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="profileBannerContentType"
+            id="field_profileBannerContentType"
+            formControlName="profileBannerContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.userExtra.age" for="field_age">Age</label>
+          <input type="number" class="form-control" name="age" id="field_age" data-cy="age" formControlName="age" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.userExtra.pronouns" for="field_pronouns">Pronouns</label>
+          <input type="text" class="form-control" name="pronouns" id="field_pronouns" data-cy="pronouns" formControlName="pronouns" />
+        </div>
+
+        <!-- <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.userExtra.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection" selected="">
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div> -->
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.userExtra.user" for="field_user">User</label>
+          <select
+            class="form-control"
+            id="field_user"
+            data-cy="user"
+            name="user"
+            formControlName="user"
+            [compareWith]="compareUser"
+            [disabled]="true"
+            [(ngModel)]="currentUserID"
+          >
+            <option [ngValue]="currentUserID">{{ currentUserID.login }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

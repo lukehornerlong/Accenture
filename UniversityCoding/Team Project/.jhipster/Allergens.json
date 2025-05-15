@@ -1,0 +1,85 @@
+{
+  "changelogDate": "20230426114119",
+  "fields": [
+    {
+      "fieldName": "celery",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "gluten",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "crustaceans",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "egg",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "fish",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "lupin",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "milk",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "molluscs",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "mustard",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "nuts",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "peanuts",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "sesame",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "soya",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "sulphur",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Allergens",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "id": false,
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "allergens",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "id": false,
+      "otherEntityField": "id",
+      "otherEntityName": "post",
+      "otherEntityRelationshipName": "allergens",
+      "ownerSide": true,
+      "relationshipName": "post",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

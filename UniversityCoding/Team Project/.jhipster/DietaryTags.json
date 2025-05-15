@@ -1,0 +1,23 @@
+{
+  "changelogDate": "20230307205353",
+  "fields": [
+    {
+      "fieldName": "dietary",
+      "fieldType": "String"
+    }
+  ],
+  "name": "DietaryTags",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "post",
+      "otherEntityRelationshipName": "dietaryTags",
+      "ownerSide": true,
+      "relationshipName": "post",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

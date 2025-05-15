@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="post">
+      <h2 data-cy="postDetailsHeading"><span jhiTranslate="teamprojectApp.post.detail.title">Post</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ post.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.postTitle">Post Title</span></dt>
+        <dd>
+          <span>{{ post.postTitle }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.postPic">Post Pic</span></dt>
+        <dd>
+          <div *ngIf="post.postPic">
+            <a (click)="openFile(post.postPic, post.postPicContentType)">
+              <img [src]="'data:' + post.postPicContentType + ';base64,' + post.postPic" style="max-width: 100%" alt="post image" />
+            </a>
+            {{ post.postPicContentType }}, {{ byteSize(post.postPic) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.postDesc">Post Desc</span></dt>
+        <dd>
+          <span>{{ post.postDesc }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.timestamp">Timestamp</span></dt>
+        <dd>
+          <span>{{ post.timestamp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.likes">Likes</span></dt>
+        <dd>
+          <span>{{ post.likes }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.affordability">Affordability</span></dt>
+        <dd>
+          <span>{{ post.affordability }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.simplicity">Simplicity</span></dt>
+        <dd>
+          <span>{{ post.simplicity }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.shelfLife">Shelf Life</span></dt>
+        <dd>
+          <span>{{ post.shelfLife }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.user">User</span></dt>
+        <dd>
+          <span>{{ post.user?.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.post.dietaryTags">Dietary Tags</span></dt>
+        <dd>
+          <span *ngFor="let dietaryTags of post.dietaryTags; let last = last">
+            <a [routerLink]="['/dietary-tags', dietaryTags.id, 'view']">{{ dietaryTags.dietary }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/post', post.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

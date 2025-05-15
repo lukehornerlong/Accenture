@@ -1,0 +1,176 @@
+<div class="container">
+  <h1>Settings</h1>
+  <div class="container light-style flex-grow-1 container-p-y">
+    <div class="card overflow-hidden border-0">
+      <div class="row no-gutters row-bordered row-border-light">
+        <div class="col-md-3 pt-0" id="headings-link-div">
+          <div class="list-group list-group-flush account-settings-links" id="headings-link-inner-div">
+            <a
+              class="list-group-item list-group-item-action active"
+              id="headings-link-general"
+              data-toggle="list"
+              href="settings#account-general"
+              ><fa-icon [icon]="icons.gear"></fa-icon> General</a
+            >
+            <a
+              class="list-group-item list-group-item-action"
+              id="headings-link-password"
+              data-toggle="list"
+              href="settings#account-change-password"
+              ><fa-icon [icon]="icons.lock"></fa-icon> Change password</a
+            >
+            <!-- <a class="list-group-item list-group-item-action" id="headings-link-info" data-toggle="list" href="settings#account-info"
+              >ℹ️ Info</a
+            > -->
+            <a class="list-group-item list-group-item-action" id="headings-link-dietary" data-toggle="list" href="settings#account-dietary"
+              ><fa-icon [icon]="icons.hamburger"></fa-icon> Dietary</a
+            >
+            <!-- <a
+              class="list-group-item list-group-item-action"
+              id="headings-link-notifications"
+              data-toggle="list"
+              href="settings#account-notifications"
+              >🔔 Notifications</a
+            > -->
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="tab-content" data-spy="scroll" data-target="#headings-link-inner-div" data-offset="0">
+            <!-- General Settings -->
+            <div class="border-bottom mb-2"></div>
+            <div class="tab-pane fade active show" id="account-general">
+              <div class="card-body media align-items-center justify-content-center">
+                <h2>General</h2>
+
+                <a class="btn btn-outline-primary w-100 mt-2 mb-2" *ngIf="!userExtraExists" [routerLink]="['/user-extra/new']"
+                  >Add extra data</a
+                >
+                <div *ngIf="!userExtraExists" class="alert alert-warning" role="alert">
+                  You have not added your extra user data. Click the button to create it.
+                </div>
+
+                <img
+                  *ngIf="userExtraExists"
+                  id="profile-picture-img"
+                  [src]="avatar"
+                  alt="User profile picture"
+                  class="d-block ui-w-80 mb-3"
+                  style="max-width: 80%; max-height: 20em"
+                />
+                <div *ngIf="userExtraExists" class="media-body ml-4">
+                  <label for="avatar-input">
+                    <button class="btn btn-outline-primary" (click)="changeProfilePic(this.userExtra)">Upload new photo</button>
+                    <!-- <input type="file" id="avatar-input" class="account-settings-fileinput" /> -->
+                  </label>
+                  &nbsp;
+                  <br />
+                  <span class="small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</span>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="form-label" for="username-input">Username</label>
+                  <input
+                    required
+                    type="text"
+                    id="username-input"
+                    disabled
+                    class="form-control mb-3"
+                    placeholder="scranuser"
+                    [value]="username"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="forename-input">Forename</label>
+                  <input type="text" disabled id="forename-input" class="form-control mb-3" placeholder="Joe" [(ngModel)]="forename" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="surname-input">Surname</label>
+                  <input type="text" disabled id="surname-input" class="form-control mb-3" placeholder="Bloggs" [(ngModel)]="surname" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email-input">E-mail</label>
+                  <input type="text" disabled id="email-input" class="form-control mb-3" placeholder="user@scran.com" [(ngModel)]="email" />
+                </div>
+
+                <div class="form-group" *ngIf="userExtraExists">
+                  <label class="form-label" for="biography-input">Biography</label>
+                  <textarea
+                    type="text-area"
+                    id="biography-input"
+                    class="form-control mb-3"
+                    style="height: 6em"
+                    placeholder="Lorem ipsum..."
+                    [(ngModel)]="biography"
+                  >
+                  </textarea>
+                </div>
+
+                <a class="btn btn-outline-primary w-100 mb-5" routerLink="/account/settings">Change your user information here.</a>
+                <!-- font -->
+                <div class="form-group">
+                  <label for="font-size">Font Size:</label>
+                  <select class="form-control mb-3" id="font-size" [(ngModel)]="fontSize" (ngModelChange)="changeFontSize($event)">
+                    <option value="12">Small</option>
+                    <option value="16" selected>Medium</option>
+                    <option value="20">Large</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-bottom" style="height: 4em"></div>
+            <!-- Password Settings -->
+            <div class="tab-pane fade active show" id="account-change-password">
+              <div class="card-body pb-2">
+                <h2>Change Password</h2>
+                <a class="btn btn-outline-primary w-100 mt-2" [routerLink]="['/account/password']">Click here</a>
+              </div>
+            </div>
+            <div class="border-bottom" style="height: 4em"></div>
+
+            <!-- Allergen Settings -->
+            <div class="tab-pane fade active show" id="account-dietary">
+              <div class="card-body pb-2">
+                <h3>Dietary</h3>
+
+                <br />
+                <h4>Allergens</h4>
+
+                <a class="btn btn-outline-primary w-100 mt-2 mb-2" *ngIf="!userAllergensExists" [routerLink]="['/allergens/new']"
+                  >Declare allergens</a
+                >
+                <div *ngIf="!userAllergensExists" class="alert alert-warning" role="alert">
+                  You have not declared your allergens. Click the button to create it.
+                </div>
+
+                <div class="container-lg">
+                  <div class="row" id="allergens-landing"></div>
+                </div>
+
+                <div *ngIf="allergensModified.length > 0" class="alert alert-danger mt-2 w-100" role="alert">
+                  You have modified your allergens. You must click save changes to continue.
+                </div>
+                <div class="border-bottom" style="height: 4em"></div>
+
+                <div class="tab-pane fade active show" id="save-changes">
+                  <div class="card-body pb-2">
+                    <div class="text-right mt-3">
+                      <!-- <button class="btn btn-warning" (click)="toggleThemeMode()">
+                        {{ mainComponent.themeMode === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode' }}
+                      </button> -->
+
+                      <button type="button" class="btn btn-success" (click)="saveChanges()">Save changes</button>&nbsp;
+                      <button type="button" class="btn btn-danger">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

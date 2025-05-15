@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="allergens">
+      <h2 data-cy="allergensDetailsHeading"><span jhiTranslate="teamprojectApp.allergens.detail.title">Allergens</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ allergens.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.celery">Celery</span></dt>
+        <dd>
+          <span>{{ allergens.celery }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.gluten">Gluten</span></dt>
+        <dd>
+          <span>{{ allergens.gluten }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.crustaceans">Crustaceans</span></dt>
+        <dd>
+          <span>{{ allergens.crustaceans }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.egg">Egg</span></dt>
+        <dd>
+          <span>{{ allergens.egg }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.fish">Fish</span></dt>
+        <dd>
+          <span>{{ allergens.fish }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.lupin">Lupin</span></dt>
+        <dd>
+          <span>{{ allergens.lupin }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.milk">Milk</span></dt>
+        <dd>
+          <span>{{ allergens.milk }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.molluscs">Molluscs</span></dt>
+        <dd>
+          <span>{{ allergens.molluscs }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.mustard">Mustard</span></dt>
+        <dd>
+          <span>{{ allergens.mustard }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.nuts">Nuts</span></dt>
+        <dd>
+          <span>{{ allergens.nuts }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.peanuts">Peanuts</span></dt>
+        <dd>
+          <span>{{ allergens.peanuts }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.sesame">Sesame</span></dt>
+        <dd>
+          <span>{{ allergens.sesame }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.soya">Soya</span></dt>
+        <dd>
+          <span>{{ allergens.soya }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.sulphur">Sulphur</span></dt>
+        <dd>
+          <span>{{ allergens.sulphur }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.user">User</span></dt>
+        <dd>
+          <span>{{ allergens.user?.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.allergens.post">Post</span></dt>
+        <dd>
+          <div *ngIf="allergens.post">
+            <a [routerLink]="['/post', allergens.post.id, 'view']">{{ allergens.post.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/allergens', allergens.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

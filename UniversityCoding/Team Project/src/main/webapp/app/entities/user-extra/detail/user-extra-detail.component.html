@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userExtra">
+      <h2 data-cy="userExtraDetailsHeading"><span jhiTranslate="teamprojectApp.userExtra.detail.title">User Extra</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userExtra.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.userExtra.profilePic">Profile Pic</span></dt>
+        <dd>
+          <div *ngIf="userExtra.profilePic">
+            <a (click)="openFile(userExtra.profilePic, userExtra.profilePicContentType)">
+              <img
+                [src]="'data:' + userExtra.profilePicContentType + ';base64,' + userExtra.profilePic"
+                style="max-width: 100%"
+                alt="userExtra image"
+              />
+            </a>
+            {{ userExtra.profilePicContentType }}, {{ byteSize(userExtra.profilePic) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.userExtra.biography">Biography</span></dt>
+        <dd>
+          <span>{{ userExtra.biography }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.userExtra.profileBanner">Profile Banner</span></dt>
+        <dd>
+          <div *ngIf="userExtra.profileBanner">
+            <a (click)="openFile(userExtra.profileBanner, userExtra.profileBannerContentType)">
+              <img
+                [src]="'data:' + userExtra.profileBannerContentType + ';base64,' + userExtra.profileBanner"
+                style="max-width: 100%"
+                alt="userExtra image"
+              />
+            </a>
+            {{ userExtra.profileBannerContentType }}, {{ byteSize(userExtra.profileBanner) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.userExtra.age">Age</span></dt>
+        <dd>
+          <span>{{ userExtra.age }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.userExtra.pronouns">Pronouns</span></dt>
+        <dd>
+          <span>{{ userExtra.pronouns }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.userExtra.user">User</span></dt>
+        <dd>
+          <span>{{ userExtra.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-extra', userExtra.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

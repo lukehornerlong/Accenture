@@ -1,0 +1,31 @@
+<div class="container" style="display: flex">
+  <div class="friends-list">
+    <h2>Friends</h2>
+    <hr />
+    <div *ngFor="let friend of friends">
+      <h3>{{ friend.user_id2?.login }}</h3>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card hover" *ngFor="let post of posts">
+      <!-- TODO: Ensure image loading is nicer, consider placeholder image. -->
+      <img
+        loading="eager"
+        [src]="
+          post.postPic == null
+            ? 'https://source.unsplash.com/random/800x600/?food'
+            : 'data:' + post.postPicContentType + ';base64,' + post.postPic
+        "
+        alt="{{ post.postTitle + ' image' }}"
+        class="image-overview {{ post.postPicContentType == null ? 'image-overview-stock' : '' }}"
+      />
+      <div class="card-footer">
+        <h5 class="card-title">{{ post.postTitle }}</h5>
+        <p class="card-text">{{ post.postDesc }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="vertical-line"></div>
+</div>

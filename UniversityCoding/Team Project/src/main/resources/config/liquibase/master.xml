@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="floatType" value="float4" dbms="h2"/>
+    <property name="uuidType" value="uuid" dbms="h2"/>
+    <property name="datetimeType" value="datetime" dbms="h2"/>
+    <property name="clobType" value="longvarchar" dbms="h2"/>
+    <property name="blobType" value="blob" dbms="h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="floatType" value="float4" dbms="postgresql"/>
+    <property name="clobType" value="longvarchar" dbms="postgresql"/>
+    <property name="blobType" value="bytea" dbms="postgresql"/>
+    <property name="uuidType" value="uuid" dbms="postgresql"/>
+    <property name="datetimeType" value="datetime" dbms="postgresql"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230307191818_added_entity_UserExtra.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230307203401_added_entity_Post.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230307205353_added_entity_DietaryTags.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230307210733_added_entity_Recipe.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230320161734_added_entity_UserPantry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230320165125_added_entity_Comment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230403222806_added_entity_Ingredient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230405004536_added_entity_LikedBy.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230420204109_added_entity_Friends.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230426114119_added_entity_Allergens.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20230307191818_added_entity_constraints_UserExtra.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230307203401_added_entity_constraints_Post.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230307205353_added_entity_constraints_DietaryTags.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230320161734_added_entity_constraints_UserPantry.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230320165125_added_entity_constraints_Comment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230403222806_added_entity_constraints_Ingredient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230405004536_added_entity_constraints_LikedBy.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230420204109_added_entity_constraints_Friends.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230426114119_added_entity_constraints_Allergens.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

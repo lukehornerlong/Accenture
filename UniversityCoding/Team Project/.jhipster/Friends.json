@@ -1,0 +1,26 @@
+{
+  "changelogDate": "20230420204109",
+  "fields": [],
+  "name": "Friends",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "friends",
+      "ownerSide": true,
+      "relationshipName": "user_id1",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "friends",
+      "ownerSide": true,
+      "relationshipName": "user_id2",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

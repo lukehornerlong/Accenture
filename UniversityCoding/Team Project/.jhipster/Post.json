@@ -1,0 +1,60 @@
+{
+  "changelogDate": "20230307203401",
+  "fields": [
+    {
+      "fieldName": "postTitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postPic",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "postDesc",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "likes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "affordability",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "simplicity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "shelfLife",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Post",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "post",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "dietary",
+      "otherEntityName": "dietaryTags",
+      "otherEntityRelationshipName": "post",
+      "ownerSide": true,
+      "relationshipName": "dietaryTags",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

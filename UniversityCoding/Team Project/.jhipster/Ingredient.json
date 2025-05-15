@@ -1,0 +1,29 @@
+{
+  "changelogDate": "20230403222806",
+  "fields": [
+    {
+      "fieldName": "ingredientName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "shop",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Ingredient",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "post",
+      "relationshipName": "post",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

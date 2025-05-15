@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="likedBy">
+      <h2 data-cy="likedByDetailsHeading"><span jhiTranslate="teamprojectApp.likedBy.detail.title">Liked By</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ likedBy.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.likedBy.liked">Liked</span></dt>
+        <dd>
+          <span>{{ likedBy.liked }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.likedBy.post">Post</span></dt>
+        <dd>
+          <div *ngIf="likedBy.post">
+            <a [routerLink]="['/post', likedBy.post.id, 'view']">{{ likedBy.post.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.likedBy.user">User</span></dt>
+        <dd>
+          <span>{{ likedBy.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/liked-by', likedBy.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

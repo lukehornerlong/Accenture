@@ -1,0 +1,39 @@
+{
+  "teamprojectApp": {
+    "allergens": {
+      "home": {
+        "title": "Allergens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Allergens",
+        "createOrEditLabel": "Create or edit a Allergens",
+        "notFound": "No Allergens found"
+      },
+      "created": "A new Allergens is created with identifier {{ param }}",
+      "updated": "A Allergens is updated with identifier {{ param }}",
+      "deleted": "A Allergens is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Allergens {{ id }}?"
+      },
+      "detail": {
+        "title": "Allergens"
+      },
+      "id": "ID",
+      "celery": "Celery",
+      "gluten": "Gluten",
+      "crustaceans": "Crustaceans",
+      "egg": "Egg",
+      "fish": "Fish",
+      "lupin": "Lupin",
+      "milk": "Milk",
+      "molluscs": "Molluscs",
+      "mustard": "Mustard",
+      "nuts": "Nuts",
+      "peanuts": "Peanuts",
+      "sesame": "Sesame",
+      "soya": "Soya",
+      "sulphur": "Sulphur",
+      "user": "User",
+      "post": "Post"
+    }
+  }
+}

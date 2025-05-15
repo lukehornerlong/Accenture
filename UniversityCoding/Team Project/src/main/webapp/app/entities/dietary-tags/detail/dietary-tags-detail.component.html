@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dietaryTags">
+      <h2 data-cy="dietaryTagsDetailsHeading"><span jhiTranslate="teamprojectApp.dietaryTags.detail.title">Dietary Tags</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dietaryTags.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.dietaryTags.dietary">Dietary</span></dt>
+        <dd>
+          <span>{{ dietaryTags.dietary }}</span>
+        </dd>
+        <dt><span jhiTranslate="teamprojectApp.dietaryTags.post">Post</span></dt>
+        <dd>
+          <span *ngFor="let post of dietaryTags.posts; let last = last">
+            <a [routerLink]="['/post', post.id, 'view']">{{ post.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/dietary-tags', dietaryTags.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

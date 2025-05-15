@@ -1,0 +1,114 @@
+<div class="container-wrapper" xmlns="http://www.w3.org/1999/html">
+  <div class="container-fluid">
+    <div class="overlay">
+      <h2 style="color: whitesmoke; text-align: center; font-family: 'Lobster', cursive">Pantry</h2>
+
+      <div style="text-align: center" class="justify-content-center d-flex">
+        <select
+          class="form-select form-select-md w-60 mb-3"
+          [(ngModel)]="selectedPantryDietaryTag"
+          (ngModelChange)="filterPantryPostsByDietaryTag()"
+        >
+          <option value="">All</option>
+          <option *ngFor="let tag of dietaryTags" [value]="tag.dietary">{{ tag.dietary }}</option>
+        </select>
+      </div>
+
+      <ul class="list-group" style="overflow: hidden; overflow-y: scroll; max-height: 70vh">
+        <li class="list-group-item" style="background-color: #76a5af" *ngFor="let post of filteredPantryPosts">
+          <a [routerLink]="['/view', post.id]" class="dumb-a">
+            <div class="card hover">
+              <img
+                loading="eager"
+                [src]="
+                  post.postPic == null
+                    ? 'https://source.unsplash.com/random/800x600/?food'
+                    : 'data:' + post.postPicContentType + ';base64,' + post.postPic
+                "
+                alt="{{ post.postTitle + ' image' }}"
+                class="image-overview {{ post.postPicContentType == null ? 'image-overview-stock' : '' }}"
+              />
+              <div class="card-footer">
+                <h5 class="card-title">
+                  {{ post.postTitle }}
+                  <span style="color: darkgoldenrod"> {{ calculateAverage(post.affordability, post.simplicity, post.shelfLife) }}✰</span>
+                </h5>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- align div using bootstrap for search form and select to be in the same row -->
+
+    <div class="search-wrapper">
+      <div class="search-box d-flex justify-content-center mx-auto">
+        <h4 class="m-4 mt-2">Dietary</h4>
+        <select
+          class="form-select form-select-lg w-25 mb-3 dropdown px-2"
+          [(ngModel)]="selectedDietaryTag"
+          (ngModelChange)="filterPostsByDietaryTag()"
+        >
+          <option selected value="">All</option>
+          <option *ngFor="let tag of dietaryTags" [value]="tag.dietary">
+            {{ tag.dietary }}
+          </option>
+        </select>
+
+        <!-- <div class="search-field">
+          <input
+            id="search"
+            type="text"
+            class="search-field-again px-2"
+            placeholder="Search..."
+            [ngbTypeahead]="search"
+            [inputFormatter]="inputFormatter"
+            [resultFormatter]="inputFormatter"
+            [(ngModel)]="selectedPost"
+            (blur)="onSearchSubmit()"
+            [editable]="true"
+            (selectItem)="onSelectItem($event)"
+            (keyup.enter)="onEnterPress()"
+          />
+          <i>
+            <fa-icon [icon]="faMagnifyingGlass" class="fas me-3" style="color: #45818e"></fa-icon>
+          </i>
+
+          <ng-template #rt let-r="result" let-t="term">
+            {{ r.postTitle }}
+          </ng-template>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="row row-cols-2" style="overflow-y: auto">
+      <div class="col mb-4" id="card1" *ngFor="let post of filteredPosts">
+        <div class="card hover" (click)="onCardClick(post.id)">
+          <a [routerLink]="['/view', post.id]" class="dumb-a">
+            <div class="card hover">
+              <!-- TODO: Ensure image loading is nicer, consider placeholder image. -->
+              <img
+                loading="eager"
+                [src]="
+                  post.postPic == null
+                    ? 'https://source.unsplash.com/random/800x600/?food'
+                    : 'data:' + post.postPicContentType + ';base64,' + post.postPic
+                "
+                alt="{{ post.postTitle + ' image' }}"
+                class="image-overview {{ post.postPicContentType == null ? 'image-overview-stock' : '' }}"
+              />
+              <div class="card-footer">
+                <h5 class="card-title">{{ post.postTitle }}</h5>
+                <p class="card-text">{{ post.postDesc }}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="button-container">
+        <button (click)="toggleOverlay()" class="blue-button">&lt;&lt;</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+{
+  "changelogDate": "20230307191818",
+  "fields": [
+    {
+      "fieldName": "profilePic",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "biography",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "profileBanner",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pronouns",
+      "fieldType": "String"
+    }
+  ],
+  "name": "UserExtra",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "id": true,
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userExtra",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

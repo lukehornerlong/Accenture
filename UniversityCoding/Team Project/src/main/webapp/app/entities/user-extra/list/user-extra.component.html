@@ -1,0 +1,143 @@
+<div>
+  <h2 id="page-heading" data-cy="UserExtraHeading">
+    <span jhiTranslate="teamprojectApp.userExtra.home.title">User Extras</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="teamprojectApp.userExtra.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-extra"
+        [routerLink]="['/user-extra/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="teamprojectApp.userExtra.home.createLabel"> Create a new User Extra </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userExtras?.length === 0">
+    <span jhiTranslate="teamprojectApp.userExtra.home.notFound">No User Extras found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="userExtras && userExtras.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="profilePic">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.userExtra.profilePic">Profile Pic</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="biography">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.userExtra.biography">Biography</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="profileBanner">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.userExtra.profileBanner">Profile Banner</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="age">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.userExtra.age">Age</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="pronouns">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.userExtra.pronouns">Pronouns</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.login">
+            <div class="d-flex">
+              <span jhiTranslate="teamprojectApp.userExtra.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userExtra of userExtras; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-extra', userExtra.id, 'view']">{{ userExtra.id }}</a>
+          </td>
+          <td>
+            <a *ngIf="userExtra.profilePic" (click)="openFile(userExtra.profilePic, userExtra.profilePicContentType)">
+              <img
+                [src]="'data:' + userExtra.profilePicContentType + ';base64,' + userExtra.profilePic"
+                style="max-height: 30px"
+                alt="userExtra image"
+              />
+            </a>
+            <span *ngIf="userExtra.profilePic">{{ userExtra.profilePicContentType }}, {{ byteSize(userExtra.profilePic) }}</span>
+          </td>
+          <td>{{ userExtra.biography }}</td>
+          <td>
+            <a *ngIf="userExtra.profileBanner" (click)="openFile(userExtra.profileBanner, userExtra.profileBannerContentType)">
+              <img
+                [src]="'data:' + userExtra.profileBannerContentType + ';base64,' + userExtra.profileBanner"
+                style="max-height: 30px"
+                alt="userExtra image"
+              />
+            </a>
+            <span *ngIf="userExtra.profileBanner">{{ userExtra.profileBannerContentType }}, {{ byteSize(userExtra.profileBanner) }}</span>
+          </td>
+          <td>{{ userExtra.age }}</td>
+          <td>{{ userExtra.pronouns }}</td>
+          <td>
+            {{ userExtra.user?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/user-extra', userExtra.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/user-extra', userExtra.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(userExtra)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

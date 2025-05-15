@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div cdkDropList>
+      <div class="col mb-4 justify-content-center" *ngFor="let post of posts; let i = index" [ngClass]="{ 'd-none': i !== currentIndex }">
+        <img
+          loading="lazy"
+          [src]="
+            post.postPic == null
+              ? 'https://source.unsplash.com/random/800x600/?food'
+              : 'data:' + post.postPicContentType + ';base64,' + post.postPic
+          "
+          alt="{{ post.postTitle + ' image' }}"
+          class="image-overview {{ post.postPicContentType == null ? 'image-overview-stock' : '' }}"
+        />
+        <div cdkDrag class="card hover card-explore">
+          <button class="btn btn-info btn-block btn-explore" (click)="openModal(post)">Info</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content between">
+    <div class="row card-body">
+      <div class="col-6">
+        <button class="btn btn-danger btn-block btn-explore" (click)="dislikePost()">Dislike</button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-success btn-block btn-explore" (click)="likePost()">Like</button>
+      </div>
+    </div>
+  </div>
+</div>

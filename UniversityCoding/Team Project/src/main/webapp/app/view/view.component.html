@@ -1,0 +1,222 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="container">
+  <div class="post-section">
+    <div class="col-md-12" id="postContent">
+      <h1 class="post-title card-body">{{ post.postTitle }}</h1>
+      <img
+        class="post-image card-body rounded w-100 mw-75"
+        [src]="
+          post.postPic == null
+            ? 'https://source.unsplash.com/random/800x600/?food'
+            : 'data:' + post.postPicContentType + ';base64,' + post.postPic
+        "
+        alt="{{ post.postTitle + ' image' }}"
+        style="object-fit: contain; max-height: 40em"
+      />
+      <div *ngIf="this.roundedRatingAverage == 5">
+        <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checkedRating">&#9733;</span>
+      </div>
+
+      <div *ngIf="this.roundedRatingAverage == 4">
+        <span *ngFor="let number of [0, 1, 2, 3]" class="checkedRating">&#9733;</span>
+        <span class="uncheckedRating">&#9733;</span>
+      </div>
+
+      <div *ngIf="this.roundedRatingAverage == 3">
+        <span *ngFor="let number of [0, 1, 2]" class="checkedRating">&#9733;</span>
+        <span *ngFor="let number of [0, 1]" class="uncheckedRating">&#9733;</span>
+      </div>
+
+      <div *ngIf="this.roundedRatingAverage == 2">
+        <span *ngFor="let number of [0, 1]" class="checkedRating">&#9733;</span>
+        <span *ngFor="let number of [0, 1, 2]" class="uncheckedRating">&#9733;</span>
+      </div>
+      <div *ngIf="this.roundedRatingAverage == 1">
+        <span class="checkedRating">&#9733;</span>
+        <span *ngFor="let number of [0, 1, 2, 3]" class="uncheckedRating">&#9733;</span>
+      </div>
+      <div *ngIf="this.roundedRatingAverage == 0">
+        <span *ngFor="let number of [0, 1, 2, 3, 4]" class="uncheckedRating">&#9733;</span>
+      </div>
+      <p style="color: #808080">{{ totalComments }} user reviews</p>
+      <p class="post-description">{{ post.postDesc }}</p>
+    </div>
+    <div class="likes-count">Likes: {{ post.likes }}</div>
+    <div style="width: 100%" class="card-body mx-auto">
+      <h1 style="color: #0084ff"><b>Reviews</b></h1>
+      <div class="commentSection">
+        <div *ngFor="let comment of comments">
+          <div class="commentBox" *ngIf="comment.post!.id == post.id">
+            <br />
+            <div class="commentUser" *ngFor="let user of allUserExtra">
+              <div *ngIf="user.user!.login == comment.user!.login">
+                <img
+                  class="comment-profile-img"
+                  [src]="
+                    user.profilePic == null
+                      ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+                      : 'data:' + user.profilePicContentType + ';base64,' + user.profilePic
+                  "
+                  alt="post image"
+                />
+                <br />
+                <b>{{ comment.user!.login }}</b>
+              </div>
+            </div>
+            <div class="commentText">
+              {{ comment.comment }}
+              <div *ngIf="comment.rating == 5">
+                <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checkedCommentRating">&#9733;</span>
+              </div>
+
+              <div *ngIf="comment.rating == 4">
+                <span *ngFor="let number of [0, 1, 2, 3]" class="checkedCommentRating">&#9733;</span>
+              </div>
+
+              <div *ngIf="comment.rating == 3">
+                <span *ngFor="let number of [0, 1, 2]" class="checkedCommentRating">&#9733;</span>
+              </div>
+
+              <div *ngIf="comment.rating == 2">
+                <span *ngFor="let number of [0, 1]" class="checkedCommentRating">&#9733;</span>
+              </div>
+
+              <div *ngIf="comment.rating == 1">
+                <span class="checkedCommentRating">&#9733;</span>
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
+      </div>
+      <button class="btn btn-danger mt-2 w-100" (click)="deleteComment()"><b>Delete my review</b></button>
+    </div>
+
+    <br />
+    <br />
+  </div>
+
+  <div class="post-creator">
+    <div class="post-creator-title">
+      <h2>Made by:</h2>
+    </div>
+
+    <div class="post-creator-images">
+      <div *ngFor="let user of postUserExtra">
+        <img
+          class="profile-img"
+          [src]="
+            user.profilePic == null
+              ? 'https://source.unsplash.com/random/800x600/?food'
+              : 'data:' + user.profilePicContentType + ';base64,' + user.profilePic
+          "
+          alt="post image"
+        />
+      </div>
+    </div>
+
+    <a class="post-creator-name" [routerLink]="['/profile', post.user.login]">{{ post.user.login }}</a>
+    <div class="delete-post-container" *ngIf="post.user.id === currentUserID.id">
+      <button class="delete-post-button" (click)="onDeletePost()">Delete Post</button>
+    </div>
+    <button class="delete-post-button" *ngIf="isInPantry()" (click)="onDeletePantryPost()">Delete From Pantry</button>
+
+    <div class="post-stats" *ngIf="post.user.id !== currentUserID.id">
+      <button class="like-button" (click)="onLike()">Like</button>
+    </div>
+
+    <ul class="post-rating-list mb-3" *ngFor="let user of postUserExtra">
+      <li>Affordability</li>
+      <div *ngIf="post.affordability == 5">
+        <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.affordability == 4">
+        <span *ngFor="let number of [0, 1, 2, 3]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.affordability == 3">
+        <span *ngFor="let number of [0, 1, 2]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.affordability == 2">
+        <span *ngFor="let number of [0, 1]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.affordability == 1">
+        <span class="checked">&#9733;</span>
+      </div>
+      <li>Simplicity</li>
+      <div *ngIf="post.simplicity == 5">
+        <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.simplicity == 4">
+        <span *ngFor="let number of [0, 1, 2, 3]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.simplicity == 3">
+        <span *ngFor="let number of [0, 1, 2]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.simplicity == 2">
+        <span *ngFor="let number of [0, 1]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.simplicity == 1">
+        <span class="checked">&#9733;</span>
+      </div>
+      <li>Shelf life</li>
+      <div *ngIf="post.shelfLife == 5">
+        <span *ngFor="let number of [0, 1, 2, 3, 4]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.shelfLife == 4">
+        <span *ngFor="let number of [0, 1, 2, 3]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.shelfLife == 3">
+        <span *ngFor="let number of [0, 1, 2]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.shelfLife == 2">
+        <span *ngFor="let number of [0, 1]" class="checked">&#9733;</span>
+      </div>
+
+      <div *ngIf="post.shelfLife == 1">
+        <span class="checked">&#9733;</span>
+      </div>
+    </ul>
+  </div>
+
+  <div *ngFor="let user of userExtra" style="width: 100%; text-align: center">
+    <img
+      class="user-comment-img m-3"
+      [src]="
+        user.profilePic == null
+          ? 'https://source.unsplash.com/random/800x600/?food'
+          : 'data:' + user.profilePicContentType + ';base64,' + user.profilePic
+      "
+      alt="post image"
+    />
+
+    <textarea
+      [(ngModel)]="commentText"
+      id="newUserComment"
+      type="text"
+      placeholder="Add comment here"
+      maxlength="500"
+      style="width: 80%; height: 150px; text-align: center; border-radius: 25px; background-color: rgb(155, 151, 151)"
+    ></textarea>
+    <br />
+    <h3>
+      <B>Change rating here : </B>
+      <button class="ratingStar" (mouseover)="onStar1()" id="star1"><span>&#9733;</span></button>
+      <button class="ratingStar" (mouseover)="onStar2()" id="star2"><span>&#9733;</span></button>
+      <button class="ratingStar" (mouseover)="onStar3()" id="star3"><span>&#9733;</span></button>
+      <button class="ratingStar" (mouseover)="onStar4()" id="star4"><span>&#9733;</span></button>
+      <button class="ratingStar" (mouseover)="onStar5()" id="star5"><span>&#9733;</span></button>
+    </h3>
+    <button (click)="onSubmit(); clearStars(); commentText = ' '">Submit</button>
+  </div>
+</div>

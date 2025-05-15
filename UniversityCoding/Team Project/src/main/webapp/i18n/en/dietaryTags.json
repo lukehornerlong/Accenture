@@ -1,0 +1,25 @@
+{
+  "teamprojectApp": {
+    "dietaryTags": {
+      "home": {
+        "title": "Dietary Tags",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dietary Tags",
+        "createOrEditLabel": "Create or edit a Dietary Tags",
+        "notFound": "No Dietary Tags found"
+      },
+      "created": "A new Dietary Tags is created with identifier {{ param }}",
+      "updated": "A Dietary Tags is updated with identifier {{ param }}",
+      "deleted": "A Dietary Tags is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dietary Tags {{ id }}?"
+      },
+      "detail": {
+        "title": "Dietary Tags"
+      },
+      "id": "ID",
+      "dietary": "Dietary",
+      "post": "Post"
+    }
+  }
+}

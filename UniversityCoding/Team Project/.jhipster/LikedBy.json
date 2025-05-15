@@ -1,0 +1,29 @@
+{
+  "changelogDate": "20230405004536",
+  "fields": [
+    {
+      "fieldName": "liked",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "LikedBy",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "post",
+      "relationshipName": "post",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "likedBy",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,107 @@
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.signup-title {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 0.05rem;
+  color: #45818e;
+}
+
+.registerBg {
+  background-color: #76a5af;
+  background-image: radial-gradient(#45818e, #76a5af, #45818e);
+}
+
+.registerLogo {
+  background-image: linear-gradient(#45818e, #76a5af);
+  border-radius: 0 0.9rem 0.9rem 0;
+}
+
+// devider
+.divider:after,
+.divider:before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.form-control {
+  border-radius: 3rem;
+  font-size: 1rem;
+  box-shadow: 3px 3px #eeeeee;
+}
+
+.form-control:focus {
+  border-radius: 3rem;
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+.input-group-text {
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.custom-border {
+  border-radius: 3rem !important;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 3rem;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold; //firefox???
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: #fff;
+  box-shadow: 3px 3px #eeeeee;
+}
+
+// card fade in effect
+.card-fade {
+  animation: fadeIn 0.75s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+// hover effect
+
+.hover-underline-animation-Register {
+  display: inline-block;
+  position: relative;
+  color: #ed5c5c;
+}
+
+.hover-underline-animation-Register::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.5px;
+  bottom: 0px;
+  left: 0;
+  background-color: #ed5c5c;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation-Register:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

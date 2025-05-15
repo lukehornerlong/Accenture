@@ -1,0 +1,14 @@
+{
+  "changelogDate": "20230307210733",
+  "fields": [
+    {
+      "fieldName": "recipeTitle",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Recipe",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

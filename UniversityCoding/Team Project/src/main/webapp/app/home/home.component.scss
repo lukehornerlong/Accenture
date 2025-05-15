@@ -1,0 +1,172 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+/*.hipster {
+  display: inline-block;
+  width: 347px;
+  height: 497px;
+  background-size: contain;
+}
+*/
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+}
+
+container-fluid {
+  height: 100vh;
+}
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.image-overview {
+  object-fit: contain;
+  height: 18em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.image-overview-stock {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.row-cols-2 > * {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.Homepage {
+  height: 100vh;
+}
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dumb-a {
+  color: #000; // Ensure this is the same as non-a color.
+  text-decoration: none;
+}
+
+.container-fluid {
+  position: relative;
+}
+
+button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 101; /* ensure button is above overlay */
+}
+
+.container-wrapper {
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 50%;
+  transform: translate(0%, -50%);
+  right: -300px;
+  width: 300px;
+  height: 70vh;
+  background-color: #45818e;
+  z-index: 100;
+  transition: right 0.3s ease-out;
+}
+
+.overlay.active {
+  right: 0;
+}
+
+.button-container {
+  position: fixed;
+  top: 50%;
+  right: 0px; /* adjust for button size */
+  transform: translate(0, -50%);
+  z-index: 101; /* higher than the z-index of .overlay */
+  transition: right 0.3s ease-out;
+}
+
+.button-container.active {
+  right: 300px;
+}
+
+.blue-button {
+  background-color: #45818e;
+  color: whitesmoke;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Lobster', cursive;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.blue-button.active {
+  background-color: rgba(69, 129, 142, 0.5);
+}
+
+// search form
+
+// .search-wrapper {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .search-wrapper .search-box {
+//   width: 500px;
+//   background: #ffffff;
+//   height: 65px;
+//   border-radius: 5px;
+//   display: flex;
+//   padding: 10px;
+//   box-shadow: 0 8px 6px -10px #b3c6ff;
+// }
+
+// .search-wrapper .search-box .dropdown {
+//   width: 150px;
+//   border: 1px solid #45818e6e;
+//   border-right: 2px solid #45818e6e;
+//   border-radius: 50px 0px 0px 50px;
+//   color: rgba(69, 129, 142, 0.5);
+//   position: relative;
+//   cursor: pointer;
+// }
+
+// .search-wrapper .search-box .dropdown ul {
+//   display: none;
+// }
+
+// .search-wrapper .search-box .search-field {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   border: 1px solid #45818e6e;
+//   border-left: none;
+//   border-radius: 0px 50px 50px 0px;
+// }
+
+// .search-wrapper .search-box .search-field-again {
+//   position: relative;
+
+//   width: 100%;
+//   height: 100%;
+//   border: none;
+//   border-radius: 0px 50px 50px 0px;
+// }
+
+// .search-wrapper .search-box .search-field .fas {
+//   position: absolute;
+//   right: 0;
+//   bottom: 15%;
+//   font-size: 22px;
+//   color: #45818e;
+//   cursor: pointer;
+// }

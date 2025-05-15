@@ -1,0 +1,29 @@
+{
+  "changelogDate": "20230320161734",
+  "fields": [
+    {
+      "fieldName": "timestamp",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "UserPantry",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "post",
+      "relationshipName": "post",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userPantry",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,166 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-post-heading" data-cy="PostCreateUpdateHeading" jhiTranslate="teamprojectApp.post.home.createOrEditLabel">
+        Create or edit a Post
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.postTitle" for="field_postTitle">Post Title</label>
+          <input type="text" class="form-control" name="postTitle" id="field_postTitle" data-cy="postTitle" formControlName="postTitle" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.postPic" for="field_postPic">Post Pic</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('postPicContentType')!.value + ';base64,' + editForm.get('postPic')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('postPic')!.value"
+              alt="post image"
+            />
+            <div *ngIf="editForm.get('postPic')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start"
+                >{{ editForm.get('postPicContentType')!.value }}, {{ byteSize(editForm.get('postPic')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('postPic', 'postPicContentType', 'file_postPic')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_postPic"
+              data-cy="postPic"
+              (change)="setFileData($event, 'postPic', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="postPic" id="field_postPic" data-cy="postPic" formControlName="postPic" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="postPicContentType"
+            id="field_postPicContentType"
+            formControlName="postPicContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.postDesc" for="field_postDesc">Post Desc</label>
+          <input type="text" class="form-control" name="postDesc" id="field_postDesc" data-cy="postDesc" formControlName="postDesc" />
+        </div>
+
+        <!-- <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.timestamp" for="field_timestamp">Timestamp</label>
+          <div class="d-flex">
+            <input
+              id="field_timestamp"
+              data-cy="timestamp"
+              type="datetime-local"
+              class="form-control"
+              name="timestamp"
+              formControlName="timestamp"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div> -->
+
+        <!-- <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.likes" for="field_likes">Likes</label>
+          <input type="number" class="form-control" name="likes" id="field_likes" data-cy="likes" formControlName="likes" />
+        </div> -->
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.affordability" for="field_affordability">Affordability</label>
+          <input
+            type="number"
+            class="form-control"
+            name="affordability"
+            id="field_affordability"
+            data-cy="affordability"
+            formControlName="affordability"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.simplicity" for="field_simplicity">Simplicity</label>
+          <input
+            type="number"
+            class="form-control"
+            name="simplicity"
+            id="field_simplicity"
+            data-cy="simplicity"
+            formControlName="simplicity"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.shelfLife" for="field_shelfLife">Shelf Life</label>
+          <input type="number" class="form-control" name="shelfLife" id="field_shelfLife" data-cy="shelfLife" formControlName="shelfLife" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="teamprojectApp.post.user" for="field_user">User</label>
+          <select
+            class="form-control"
+            id="field_user"
+            data-cy="user"
+            name="user"
+            formControlName="user"
+            [compareWith]="compareUser"
+            [disabled]="true"
+            [(ngModel)]="currentUserID"
+          >
+            <option [ngValue]="currentUserID">{{ currentUserID.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="teamprojectApp.post.dietaryTags" for="field_dietaryTags">Dietary Tags</label>
+          <select
+            class="form-control"
+            id="field_dietaryTags"
+            data-cy="dietaryTags"
+            multiple
+            name="dietaryTags"
+            formControlName="dietaryTags"
+            [compareWith]="compareDietaryTags"
+          >
+            <option [ngValue]="dietaryTagsOption" *ngFor="let dietaryTagsOption of dietaryTagsSharedCollection">
+              {{ dietaryTagsOption.dietary }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "teamprojectApp": {
+    "friends": {
+      "home": {
+        "title": "Friends",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Friends",
+        "createOrEditLabel": "Create or edit a Friends",
+        "notFound": "No Friends found"
+      },
+      "created": "A new Friends is created with identifier {{ param }}",
+      "updated": "A Friends is updated with identifier {{ param }}",
+      "deleted": "A Friends is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Friends {{ id }}?"
+      },
+      "detail": {
+        "title": "Friends"
+      },
+      "id": "ID",
+      "user_id1": "User Id 1",
+      "user_id2": "User Id 2"
+    }
+  }
+}
