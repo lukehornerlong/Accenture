@@ -1,3 +1,3 @@
 # University Projects 📚💻
 
-This repository contains coding projects from various modules completed during my university studies. Each folder corresponds to a different module, and includes assignments and coursework.
+This repository currently contains coding projects from various modules completed during my university studies within my first and second years. Each folder corresponds to a different module, and includes assignments and coursework.
