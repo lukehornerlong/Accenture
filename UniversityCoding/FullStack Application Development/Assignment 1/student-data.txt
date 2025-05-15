@@ -1,0 +1,5 @@
+hij934	2	DS	Adv Programming	AI
+lbg914	3	Project	Adv Programming	DS
+qwo538	2	Maths	Project	AI
+xaz8345	2	Data Algo	Data Algo	Data Algo
+edw237	2	Maths	Adv Programming	DS
