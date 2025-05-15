@@ -17,7 +17,7 @@ This repository is a collection of:
 
 /UniversityCoding/
 - Coursework and projects from various modules
-- Languages I have worked in include Java, Haskell, Python, SQL, C, JavaScript however only my Java work has been recoverable
+- Languages I have worked in include Java, Haskell, Python, SQL, C, JavaScript however only some of my work has been recoverable so far
 
 /PersonalCoding/
 - personal projects, web apps, automation scripts
