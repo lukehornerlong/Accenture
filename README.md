@@ -1,4 +1,5 @@
-<img src="https://readme-typing-svg.demolab.com/?lines=Hi,+I'm+Luke+Horner--Long;Final+Year+CS+Student;React+Developer&center=true&width=500&height=50&color=34D058&font=Fira%20Code" />
+<img src="https://readme-typing-svg.demolab.com/?lines=Hi,+I'm+Luke+Horner-Long;Final+Year+CS+Student;React+Developer&center=true&width=1000&height=100&color=34D058&font=Fira%20Code" />
+
 # Personal & University Code Repository
 
 Hi! I'm a final-year Computer Science student at the **University of Birmingham**, with industry experience as a **Front-End Developer** at **Hastings Direct**.
