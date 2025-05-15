@@ -11,7 +11,7 @@ Over the course of both roles, I gained hands-on experience in real-world softwa
 | `JavaScript` / `React`     | Daily use in feature development and refactoring |
 | `Jest`                     | Unit testing and Test Driven Development in large codebases          |
 | `Git`                      | Feature branching, pull requests, code reviews   |
-| `Cucumber` (Behaviour Driven Development)           | Wrote clear test scenarios for cross-functional teams |
+| `Cucumber` (BDD)           | Wrote clear test scenarios for cross-functional teams |
 | `Agile / Scrum`            | Participated in standups, retros, discoveries    |
 
 ## Key Contributions
@@ -37,7 +37,7 @@ Over the course of both roles, I gained hands-on experience in real-world softwa
 ## Summer Internship (2022)
 
 - Worked within the **Digital and Change division**, focused on automation and testing.
-- Wrote BDD-style automated tests using **Cucumber** to support cross-functional collaboration.
+- Wrote Behaviour Driven Development style automated tests using **Cucumber** to support cross-functional collaboration.
 - Developed **pipeline automation tasks** alongside the DevOps team.
 - Presented a project on **automation ROI** and **improvments for future interns** to the **Digital and Change Senior Leadership Team**.
 
