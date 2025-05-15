@@ -15,11 +15,15 @@ Over the course of both roles, I gained hands-on experience in real-world softwa
 | `Agile / Scrum`            | Participated in standups, retros, discoveries    |
 
 ## Key Contributions
+### Fire, Flood and Theft
+- Involved in discovery and development of the Fire Flood and Theft Journeys for digital claims
+- Developed stages within each step of the user journey in React ensuring responsive design
+- Helped debug, code review and improve solutions within the project
 
 ### Debug Menu Component
 
-- Designed and developed a **reusable Debug Menu** in React to improve the team’s development and QA workflow.
-- **Lazy-loaded** and **togglable** to prevent it from being shipped with live production code.
+- Designed and developed a **reusable Debug Menu** in React to improve the team’s development workflow.
+- **Lazy-loaded** and **togglable** to prevent it from being pushed to production.
 - Parsed app metadata and data store context for quick, readable access to internal state.
 - Adopted by **multiple teams** within Digital Claims.
 - Developed iteratively with feedback from the Principal Engineer and Solution Architect.
@@ -27,21 +31,14 @@ Over the course of both roles, I gained hands-on experience in real-world softwa
 ### Digital Commons Migration
 
 - Helped **migrate components** to a shared Digital Commons library.
-- Ensured component consistency and DRY principles across multiple product teams.
+- Ensured component consistency across multiple product teams.
 - Integrated **GA4 analytics** via event emitters.
-
-### Team & Cultural Impact
-
-- Represented Hastings Direct at a **University of Birmingham hiring event**, promoting early careers.
-- Assisted with **interview evaluations** and co-designed parts of the **assessment centre process**.
-- Participated in Agile ceremonies and planning cycles, gaining a deep understanding of real-world development lifecycles.
 
 ## Summer Internship (2022)
 
 - Worked within the **Digital and Change division**, focused on automation and testing.
 - Wrote BDD-style automated tests using **Cucumber** to support cross-functional collaboration.
 - Developed **pipeline automation tasks** alongside the DevOps team.
-- Presented a project on **automation ROI** to the **Digital and Change Senior Leadership Team**.
-- Contributed to planning improvements for future internship cohorts.
+- Presented a project on **automation ROI** and **improvments for future interns** to the **Digital and Change Senior Leadership Team**.
 
 
