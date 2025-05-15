@@ -1,4 +1,4 @@
-# ![name](https://img.shields.io/badge/Luke%20Horner--Long-34D058?style=for-the-badge&logo=github&logoColor=white) 
+<img src="https://readme-typing-svg.demolab.com/?lines=Hi,+I'm+Luke+Horner--Long;Final+Year+CS+Student;React+Developer&center=true&width=500&height=50&color=34D058&font=Fira%20Code" />
 # Personal & University Code Repository
 
 Hi! I'm a final-year Computer Science student at the **University of Birmingham**, with industry experience as a **Front-End Developer** at **Hastings Direct**.
