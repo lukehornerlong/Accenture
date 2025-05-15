@@ -22,4 +22,4 @@ Scran is a social media created to help students share cheap affordable meals. I
 Here is an interactive Mockup using Figma (currently only works in desktop)
 <https://www.figma.com/proto/8lZOu4otqf19RQDzoM9zEu/Scran?node-id=78852%3A1622&scaling=scale-down&page-id=0%3A1&starting-point-node-id=78801%3A13&show-proto-sidebar=1>
 
-## [Privacy Statement](PRIVACY.md)
+
