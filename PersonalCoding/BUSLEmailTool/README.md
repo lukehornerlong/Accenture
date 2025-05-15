@@ -9,7 +9,7 @@ Designed to be used and passed on to whoever is in the role next to make their l
 ## Features
 
 - Reads contact info (email, company name, and disabled flag) from a CSV file
-- Uses an email template with dynamic placeholders (e.g. `{{company}}`)
+- Uses an email template with dynamic placeholders (`{{company}}`)
 - Sends customized emails via Gmail using secure login
 - Skips disabled contacts automatically
-- Easy to configure and reuse for future outreach
+- Easily configurable
