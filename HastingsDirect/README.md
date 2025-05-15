@@ -17,7 +17,7 @@ Over the course of both roles, I gained hands-on experience in real-world softwa
 ## Key Contributions
 ### Fire, Flood and Theft
 - Involved in discovery and development of the Fire Flood and Theft Journeys for digital claims
-- Developed stages within each step of the user journey in React ensuring responsive design
+- Key developer involved with creating each step of the user journey in React, whilst ensuring responsive design
 - Helped debug, code review and improve solutions within the project
 
 ### Debug Menu Component
